@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5>Songs</h5>
+<div class="container">
+    {% for info in categories %}
+       <ul><li> <a href="{{url_for('view_song', categories_id=info._id)}}">{{info.song_name}}</a></li></ul>
+    {% endfor %}
+    </div>
+
+<a href="add_song" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+{% endblock %}

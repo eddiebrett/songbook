@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %} 
+<div class="container">
+    <h5>{{task.song_name}}</h5>
+
+    <ul>
+        <li>{{task.song_writer}} </li>
+        <br>
+        <li>{{task.artist_name}}</li>
+        <br>
+        <li><h5></h5>Explicit? {{task.explicit}} </li>
+        <br>
+        <li>{{task.lyrics}} </li>
+    </ul>
+    <a href="#" class="waves-effect waves-light btn col s6">Edit</a>
+    <a class="waves-effect waves-light btn col s6">Delete</a>
+</div>
+
+ {% endblock %}
