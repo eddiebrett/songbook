@@ -3,28 +3,28 @@
 <div class="container">
     <h5>Edit song</h5>
   <div class="row">
-    <form action="{{ url_for('insert_song') }}" method="POST" class="col s12">
+    <form action="{{ url_for('update_song', song_id=song._id) }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" id="song_name" name="song_name" type="text" class="validate" value="{{select.song_name}}">
+          <input placeholder="Placeholder" id="song_name" name="song_name" type="text" class="validate" value="{{song.song_name}}">
           <label for="full_name">Song name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" id="song_writer" name="song_writer" type="text" class="validate" value="{{select.song_writer}}">
+          <input placeholder="Placeholder" id="song_writer" name="song_writer" type="text" class="validate" value="{{song.song_writer}}">
           <label for="full_name">Songwriter</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" id="artist_name" name="artist_name" type="text" class="validate" value="{{select.artist_name}}">
+          <input placeholder="Placeholder" id="artist_name" name="artist_name" type="text" class="validate" value="{{song.artist_name}}">
           <label for="full_name">Artist name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" id="lyrics" name="lyrics" type="text" class="validate" value="{{select.song_lyrics}}">
+          <input placeholder="Placeholder" id="song_lyrics" name="song_lyrics" type="text" class="validate" value="{{song.song_lyrics}}">
           <label for="lyrics">Lyrics</label>
         </div>
       </div>
@@ -32,23 +32,23 @@
                 
       <div class="row">
         <div class="input-field col s12 m6">
-          <select>
-            <option value="" disabled selected>Choose your option</option>
-            <option value="yes">Explicit lyrics</option>
-            <option value="no">Clean lyrics</option>
+          <select name="explicit_lyrics">
+             <option value="" disabled {%if explicit_lyrics == '' %}selected{%endif%}>Choose your option</option>
+             <option value="yes" {%if explicit_lyrics == 'yes' %}selected{%endif%}>Explicit lyrics</option>
+             <option value="no" {%if explicit_lyrics == 'no' %}selected{%endif%}>Clean lyrics</option>
           </select>
           <label>Explicit</label>
         </div>
         <div class="input-field col s12 m6">
-          <select>
-             <option value="" disabled selected>Choose your option</option>
-             <option value="yes">Original version</option>
-             <option value="no">Cover version</option>
+          <select name="original_song">
+             <option value="" disabled {%if original_song == '' %}selected{%endif%}>Choose your option</option>
+             <option value="yes" {%if original_song == 'yes' %}selected{%endif%}>Original version</option>
+             <option value="no" {%if original_song == 'no' %}selected{%endif%}>Cover version</option>
           </select>
           <label>Original</label>
         </div>
       </div>
-      <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light right" type="submit">Submit
         <i class="material-icons right">send</i>
       </button>
     </form>

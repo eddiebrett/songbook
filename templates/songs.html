@@ -1,11 +1,44 @@
-{% extends 'base.html' %}
-{% block content %}
-<h5>Songs</h5>
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-    {% for song in songs %}
-       <ul><li> <a href="{{url_for('view_song', song_id=song._id)}}">{{song.song_name}}</a></li></ul>
-    {% endfor %}
+<br>
+<div class="row">
+        <div class="col s12 m6">
+            <select class="browser-default">
+    <option value="" disabled selected>No filter</option>
+    <option value="1" filter="explicit_lyrics">Explicit lyrics</option>
+    <option value="2">Clean lyrics</option>
+
+  </select>
+        </div>
+        <div class="col s12 m6">
+            <select class="browser-default">
+    <option value="" disabled selected>No filter</option>
+    <option value="1">Original song</option>
+    <option value="2">Cover version</option>
+  </select>
+        </div>
     </div>
 
-<a href="add_song" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-{% endblock %}
+<table class="responsive-table">
+        <thead>
+          <tr>
+              <th>Song Name</th>
+              <th>Artist Name</th>
+          </tr>
+        </thead>
+
+    {% for song in songs %}
+        <tbody>
+          <tr>
+            <td><a href="{{url_for('view_song', song_id=song._id)}}">{{song.song_name}}</a> </td>
+            <td> {{song.artist_name}}</td>
+          </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+    <p>Amount of songs available: {{songs|length}}</p>
+    <br>
+    <a href="add_song" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> {% endblock %}
+
+</div>
+

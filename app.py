@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 
+
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'songbook'
 app.config["MONGO_URI"] = 'mongodb+srv://cockneypirate:r00tUser@myfirstcluster-gzncr.mongodb.net/songbook?retryWrites=true'
@@ -12,7 +13,12 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/song_list')
 def song_list():
-    return render_template("songs.html", songs=mongo.db.songs.find())
+    filter = request.args.get('filter')
+    if filter == "explicit":
+        songs=mongo.db.songs.find({"explicit_lyrics":"yes"})    
+    else:
+        songs=mongo.db.songs.find()
+    return render_template("songs.html", songs=list(songs))
     
 @app.route('/add_song')
 def add_song():
@@ -31,14 +37,14 @@ def insert_song():
 def view_song(song_id):
     select_song =  mongo.db.songs.find_one({"_id": ObjectId(song_id)})
     all_songs =  mongo.db.songs.find()
-    return render_template('view_song.html', select=select_song,
+    return render_template('view_song.html', song=select_song,
                            songs=all_songs)
                            
 @app.route('/edit_song/<song_id>')
 def edit_song(song_id):
     select_song =  mongo.db.songs.find_one({"_id": ObjectId(song_id)})
     all_songs =  mongo.db.songs.find()
-    return render_template('edit_song.html', select=select_song,
+    return render_template('edit_song.html', song=select_song,
                            songs=all_songs)
 
 @app.route('/update_song/<song_id>', methods=["POST"])
@@ -48,12 +54,12 @@ def update_song(song_id):
     {
         'song_name':request.form.get('song_name'),
         'song_writer':request.form.get('song_writer'),
-        'song_lyrics': request.form.get('song_lyrics'),
-        'artist_name': request.form.get('artist_name'),
+        'song_lyrics':request.form.get('song_lyrics'),
+        'artist_name':request.form.get('artist_name'),
         'original_song':request.form.get('original_song'),
         'explicit_lyrics':request.form.get('explicit_lyrics')
     })
-    return redirect(url_for('songs_list'))
+    return redirect(url_for('song_list'))
     
 @app.route('/delete_song/<song_id>')
 def delete_song(song_id):

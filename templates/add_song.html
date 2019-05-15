@@ -31,7 +31,7 @@
 
       <div class="row">
         <div class="input-field col s12 m6">
-          <select>
+          <select name="explicit_lyrics">
             <option value="" disabled selected>Choose your option</option>
             <option value="yes">Explicit lyrics</option>
             <option value="no">Clean lyrics</option>
@@ -39,15 +39,15 @@
           <label>Explicit</label>
         </div>
         <div class="input-field col s12 m6">
-          <select>
+          <select name="original_song">
              <option value="" disabled selected>Choose your option</option>
-             <option value="yes">Original version</option>
-             <option value="no">Cover version</option>
+             <option placeholder="Placeholder" id="original_song" name="original_song" value="yes">Original version</option>
+             <option placeholder="Placeholder" id="original_song" name="original_song" value="no">Cover version</option>
           </select>
           <label>Original</label>
         </div>
       </div>
-      <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light right" type="submit">Submit
         <i class="material-icons right">send</i>
       </button>
     </form>

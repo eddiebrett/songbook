@@ -1,18 +1,29 @@
-{% extends 'base.html' %} {% block content %} 
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-    <h5>{{select.song_name}}</h5>
+    <br>
+    <table class="striped">
+        <tbody>
+            <tr>
+                <td>{{song.song_name}}</td>
+            </tr>
+            <tr>
+                <td>{{song.song_writer}}</td>
+            </tr>
+            <tr>
+                <td>{{song.artist_name}}</td>
+            </tr>
+            <tr>
+                <td>Explicit lyrics? {{song.explicit_lyrics}}</td>
+            </tr>
+            <tr>
+                <td>{{song.song_lyrics}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
 
-    <ul>
-        <li>{{select.song_writer}} </li>
-        <br>
-        <li>{{select.artist_name}}</li>
-        <br>
-        <li><h5></h5>Explicit? {{select.explicit}} </li>
-        <br>
-        <li>{{select.lyrics}} </li>
-    </ul>
-    <a href="{{url_for('edit_song', song_id=info._id)}}" class="waves-effect waves-light btn col s6">Edit</a>
-    <a href="{{url_for('delete_song', song_id=info._id)}}" class="waves-effect waves-light btn col s6">Delete</a>
+    <a href="{{url_for('edit_song', song_id=song._id)}}" class="waves-effect waves-light btn col s6">Edit</a>
+    <a href="{{url_for('delete_song', song_id=song._id)}}" class="waves-effect waves-light btn col s6">Delete</a>
 </div>
 
- {% endblock %}
+{% endblock %}
