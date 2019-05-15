@@ -2,8 +2,8 @@
 {% block content %}
 <h5>Songs</h5>
 <div class="container">
-    {% for info in categories %}
-       <ul><li> <a href="{{url_for('view_song', categories_id=info._id)}}">{{info.song_name}}</a></li></ul>
+    {% for song in songs %}
+       <ul><li> <a href="{{url_for('view_song', song_id=song._id)}}">{{song.song_name}}</a></li></ul>
     {% endfor %}
     </div>
 
