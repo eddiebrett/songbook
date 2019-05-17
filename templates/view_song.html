@@ -4,16 +4,19 @@
     <table class="striped">
         <tbody>
             <tr>
-                <td>{{song.song_name}}</td>
+                <td>Song Name: {{song.song_name}}</td>
             </tr>
             <tr>
-                <td>{{song.song_writer}}</td>
+                <td>Song-writer: {{song.song_writer}}</td>
             </tr>
             <tr>
-                <td>{{song.artist_name}}</td>
+                <td>Artist name: {{song.artist_name}}</td>
             </tr>
             <tr>
                 <td>Explicit lyrics? {{song.explicit_lyrics}}</td>
+            </tr>
+            <tr>
+                <td>Original version? {{song.original_song}}</td>
             </tr>
             <tr>
                 <td>{{song.song_lyrics}}</td>
@@ -23,7 +26,7 @@
     <br>
 
     <a href="{{url_for('edit_song', song_id=song._id)}}" class="waves-effect waves-light btn col s6">Edit</a>
-    <a href="{{url_for('delete_song', song_id=song._id)}}" class="waves-effect waves-light btn col s6">Delete</a>
+    <a href="{{url_for('delete_song', song_id=song._id)}}" class="waves-effect waves-light btn col s6 right">Delete</a>
 </div>
 
 {% endblock %}

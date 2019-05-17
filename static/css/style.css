@@ -1,3 +1,82 @@
+/*---------- base html ----------*/
+
 .brand-logo{
     margin-left: -5em;
+}
+
+nav .brand-logo{
+    color: #a64ac9;
+}
+
+nav{
+    background-color:#fccd04 ;
+}
+
+body{
+    background-color: #5cdb95;
+    
+}
+
+
+
+/*--------- songs page------------*/ 
+
+
+a{
+   color: #a64ac9;
+   
+}
+
+td a{
+   background-color: #fccd04;
+   
+}
+.btn-floating.btn-large i{
+    background-color: #fccd04;
+}
+
+
+
+select{
+    background-color: white;
+}
+
+
+/*--------------- edit song ---------------*/
+
+
+
+.input-field.col label{
+    color: #a64ac9;
+}
+
+input[type=text]:not(.browser-default){
+    border-bottom-color: white;
+}
+
+
+
+/*------- view song---------*/
+
+table{
+    background-color: white;
+}
+
+.btn{
+     background-color: #a64ac9;
+}
+
+/*--- alternate table stripe--*/
+table.striped>tbody>tr:nth-child(odd) {
+    background-color: #fccd04;
+}
+
+/*------- add song ---------*/
+
+placeholder{
+    color: black;
+}
+
+::placeholder{
+    color: black;
 }
