@@ -13,12 +13,19 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/song_list')
 def song_list():
-    filter = request.args.get('filter')
-    if filter == "explicit":
-        songs=mongo.db.songs.find({"explicit_lyrics":"yes"})    
-    else:
-        songs=mongo.db.songs.find()
-    return render_template("songs.html", songs=list(songs))
+    filter1 = request.args.get('filter1')
+    filter2 = request.args.get('filter2')
+    query={}
+    if filter1 == "explicit1":
+        query["explicit_lyrics"]="yes"
+    if filter1 == "explicit2":
+        query["explicit_lyrics"]="no"
+    if filter2 == "original1":
+        query["original_song"]="yes"
+    if filter2 == "original2":
+        query["original_song"]="no"
+    songs=mongo.db.songs.find(query)
+    return render_template("songs.html", songs=list(songs), filter1=filter1, filter2=filter2)
     
 @app.route('/add_song')
 def add_song():
