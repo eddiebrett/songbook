@@ -18,6 +18,8 @@ The '+' feature allows us to add new songs.
 The 'delete button' allows us to delete existing songs.
 The 'edit button' allows us to edit existing songs.
 
+There are two filter options to offer the user some more informed information. The can sort the information in the database displaying songs that are specifically explicit or original.
+
 When the user first lands on our page they will be presented by a list of all the songs in our database. They will then be given the oportunity to either add a new song to the database or click on an existing song to read more information about that particular tune. If the user decides to click on an existing song they will be taken to a page with information unique to that particular song displaying: Song-name, song-writer, artists-name, wether its an original song or a cover, wether the lyrics are clean or explicit aswell as being able to read all of the lyrics to that song. From here they can either click on the 'songbook' logo to be taken back to the home page where all of the songs are displayed or they are presented with the options to either edit or delete the song that they are currently viewing. If they decide to edit the song the will be taken to an edit page where they can make amendment to the song which upon submission will replace the current information stored on the database. If they delete the song it will be erased from the database. At the home page if the user decides that they want to add a new song they will be taken to an 'add song' section where they can fill in all the details of that particular song which will then be upload to the database before being displayed on the homepage within the list of the existing songs. There is also a neat tab to instantly show the user how many songs there are in total in the database.
 
 
@@ -48,11 +50,17 @@ Originally i wanted to design the lyrics section of the website so that you coul
 
 ## Deployment
 
-git add .
-git commit -m ""
-git push to heroku
+Deploy to github:
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/eddiebrett/songbook
+git push -u origin master
 
-http://songbook-eddiebrett.c9users.io:8080/
+Then deploy yo heroku which will store the data base:
+git add .
+git commit -m "push to heroku"
+git push heroku
 
 ## Credits
 
@@ -64,4 +72,3 @@ http://songbook-eddiebrett.c9users.io:8080/
 ### Acknowledgements
 I got inspirations for colour from: https://visme.co/blog/website-color-schemes/
 And i got inspiration for different features from materialize.
-# songbook
